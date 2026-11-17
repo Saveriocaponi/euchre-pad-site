@@ -1,0 +1,70 @@
+/* Euchre Pad site: the app's felt and chalk on top, paper below. */
+:root {
+  --felt: #1D5B3C; --desk: #154A30; --chalk: #F3EFE4; --chalk-2: rgba(243,239,228,0.85); --gold: #EBCB7A;
+  --paper: #FBFAF6; --card: #FFFFFF; --ink: #1B1E1C; --ink-2: #4A514C; --hair: #DCDDD6;
+  --hand: 'Nanum Pen Script', 'Bradley Hand', cursive;
+  --sans: 'Archivo Narrow', 'Arial Narrow', system-ui, sans-serif;
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --felt: #17492F; --desk: #10361F; --paper: #141715; --card: #1C201D; --ink: #ECEAE2; --ink-2: #B4B8B1; --hair: #2E3430; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --felt: #17492F; --desk: #10361F; --paper: #141715; --card: #1C201D; --ink: #ECEAE2; --ink-2: #B4B8B1; --hair: #2E3430; color-scheme: dark }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.55 var(--sans); }
+a { color: inherit; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+img { display: block; max-width: 100%; height: auto; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: var(--gutter); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 16px; top: 12px; z-index: 9; background: var(--chalk); color: var(--felt); padding: 8px 12px; border-radius: 8px; }
+
+/* Top bar and felt band */
+.felt { background: var(--felt); color: var(--chalk); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; letter-spacing: 0.02em; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+.bar nav { display: flex; gap: 20px; font-weight: 600; font-size: 16px; }
+.bar nav a { text-decoration: none; padding-block: 10px; color: var(--chalk-2); }
+.bar nav a:hover, .bar nav a[aria-current] { color: var(--chalk); text-decoration: underline; }
+
+.hero { display: grid; gap: 32px; align-items: center; padding-block: 28px 0; }
+.hero-icon { width: 88px; height: 88px; border-radius: 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+h1 { font: 400 clamp(64px, 16vw, 112px)/0.9 var(--hand); margin: 18px 0 6px; }
+.lead { font-size: clamp(20px, 4.6vw, 24px); color: var(--chalk-2); margin: 0 0 24px; max-width: 30ch; }
+.store { display: inline-flex; flex-direction: column; background: var(--chalk); color: var(--felt); border-radius: 999px;
+  padding: 12px 26px; font-weight: 700; text-decoration: none; min-height: 48px; justify-content: center; }
+.store small { font-weight: 600; font-size: 13px; opacity: 0.8; }
+.shots { display: flex; gap: 14px; justify-content: center; align-items: flex-end; }
+.shots img { width: 46%; max-width: 260px; border-radius: 22px 22px 0 0; }
+.shots img + img { display: none; }
+@media (min-width: 640px) { .shots img + img { display: block; } .shots img { width: 31%; } }
+@media (min-width: 900px) {
+  .hero { grid-template-columns: 1fr 1.15fr; padding-top: 48px; }
+  .hero-copy { padding-bottom: 64px; }
+}
+
+/* Paper sections */
+main { padding-block: 40px 56px; }
+h2 { font: 400 clamp(38px, 8vw, 48px)/1 var(--hand); margin: 0 0 6px; }
+.grid { display: grid; gap: 16px; }
+@media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+.card { background: var(--card); border: 1px solid var(--hair); border-radius: 14px; padding: 20px 22px; }
+.card h3 { font: 700 15px var(--sans); letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 6px; }
+.card p, .card li { color: var(--ink-2); margin: 0; }
+.card ul { margin: 0; padding-left: 20px; }
+.plus { background: var(--felt); color: var(--chalk); border: none; }
+.plus p, .plus li { color: var(--chalk-2); }
+.plus .price { color: var(--gold); font-weight: 700; }
+.note { color: var(--ink-2); margin: 28px 0 0; }
+
+footer { border-top: 1px solid var(--hair); padding-block: 20px 32px; font-size: 15px; color: var(--ink-2); }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+footer a { padding-block: 6px; }
+
+/* Support */
+.page-head { padding-block: 24px 32px; }
+.page-head h1 { font-size: clamp(56px, 14vw, 84px); }
+.mail { font-weight: 700; font-size: clamp(19px, 5vw, 24px); word-break: break-word; }
