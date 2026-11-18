@@ -64,6 +64,16 @@ footer { border-top: 1px solid var(--hair); padding-block: 20px 32px; font-size:
 footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 footer a { padding-block: 6px; }
 
+/* Phones and small tablets: everything centered. */
+@media (max-width: 899px) {
+  .hero-copy, .page-head, main, footer { text-align: center; }
+  .hero-icon { margin-inline: auto; }
+  .lead { margin-inline: auto; }
+  .card ul { list-style: none; padding: 0; }
+  .card li + li { margin-top: 4px; }
+  footer nav { justify-content: center; }
+}
+
 /* Support */
 .page-head { padding-block: 24px 32px; }
 .page-head h1 { font-size: clamp(56px, 14vw, 84px); }
